@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: header">
+	<title>Employees</title>
+</head>
+<body>
+	<nav th:replace="layouts :: navbar"></nav> <!-- this will replace navbar defined in layouts.html with the help of thymeleaf -->
+	<div class="container">
+		<form action="/employees/save" method="POST" th:object="${employee}">
+		<br>
+		<label>First Name</label>
+		<input type="text" placeholder="First Name" th:field="${employee.firstName}">
+		<br>
+		<label>Last Name</label>
+		<input type="text" placeholder="Last Name" th:field="${employee.lastName}">
+		<br>
+		<label>Email</label>
+		<input type="email" placeholder="Email" th:field="${employee.email}">
+		<br>
+		<input type="submit" value="Submit">
+			
+		</form>
+	</div>
+
+</body>
+</html>

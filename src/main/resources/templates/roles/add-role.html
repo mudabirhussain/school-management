@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: header">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Dashboard</title>
+</head>
+<body>
+<nav th:replace="layouts :: navbar"></nav>
+<h1>Add/Update - Role</h1>
+
+<div class="col-sm-3 mx-auto">
+    <form th:action="@{save}" method="post" th:object="${role}">
+        <h2 class="text-center">Add Role</h2>       
+         <div class="form-group">
+            <input type="text" class="form-control" placeholder="Role" required="required" th:field="${role.roleTitle}">
+         </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Add Role</button>
+        </div>        
+    </form>
+</div>
+
+</body>
+</html>

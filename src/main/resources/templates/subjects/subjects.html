@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: header">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Participants</title>
+</head>
+<body>
+<nav th:replace="layouts :: navbar"></nav>
+
+	<br><br>
+<div class="container">
+<h1>Subjects</h1>
+<br>
+	<a th:href="@{/subjects/add}" class="btn btn-primary btn-sm mb-3">Add Subject</a>
+<br>
+	<div class="row">
+		<div class="col-sm-6">
+		</div>
+		<div class="col-sm-3">
+			<input type="text" class="form-control" placeholder="Search...">
+		</div>
+		<div class="col-sm-1">
+		   <button type="submit" class="btn btn-secondary">Search</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="form-group col-md-4">
+          </div>
+
+<div class="container">
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Subject</th>
+					<th>Book</th>
+					<th>Writer</th>
+					<th>Teacher</th>
+					<th>Edit/Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="subject : ${subjects}">
+					<td th:text="${subject.title}"></td>
+					<td th:text="${subject.book}"></td>
+					<td th:text="${subject.writer}"></td>
+					<td th:each="participant :${subject.participants}" th:text="${participant.name}"></td>
+					<td><a href="#">Edit</a>-<a href="#">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</body>
+</html>

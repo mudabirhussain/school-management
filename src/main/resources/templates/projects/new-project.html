@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: header">
+	<title>New Project</title>
+</head>
+<body>
+	<nav th:replace="layouts :: navbar"></nav> <!-- this will replace navbar defined in layouts.html with the help of thymeleaf -->
+	<div class="container">
+		<form action="/projects/save" method="POST" th:object="${project}">
+		<input type="text" placeholder="Project Name" th:field="${project.name}">
+		<select th:field="${project.status}">
+			<option th:value="NotStarted">Not Started</option>
+			<option th:value="Progressing">Progressing</option>
+			<option th:value="Completed">Completed</option>
+		</select>
+		<textarea type="text" placeholder="Enter Project Description" th:field="${project.description}"></textarea>
+		
+		<select th:field = "${project.employees}" multiple="multiple">
+			<option th:each = "employee : ${allEmployees}"
+					th:value = "${employee.employeeId}"
+					th:text = "${employee.firstName}">
+			</option>
+		</select>
+		<input type="submit" value="Submit">
+			
+		</form>
+	</div>
+
+</body>
+</html>

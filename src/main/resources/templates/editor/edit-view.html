@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: header">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Dashboard</title>
+</head>
+<body>
+<nav th:replace="layouts :: navbar"></nav>
+<h1>Register new user</h1>
+
+<div class="col-sm-3 mx-auto">
+    <form th:action="@{save}" method="post" th:object="${participant}">
+        <h2 class="text-center">Register User</h2>
+        <div th:if="${param.exist}">Username already exist!</div>       
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="First Name" required="required" th:field="*{name}" minlength="2" maxlength="20">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Last Name" required="required" th:field="*{lastName}" minlength="2" maxlength="20">
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" placeholder="Contact" required="required" th:field="*{contact}" minlength="11" maxlength="11">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" required="required" th:field="*{username}" minlength="3" maxlength="15">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required="required" th:field="*{password}" minlength="8" maxlength="20">
+        </div>
+        <div class="form-group">
+			<select id="inputState" class="form-control" th:field="*{role}" required>
+	        <option value="0" disabled selected>Choose Role</option>
+	        <option th:each="aRole : ${roles}" th:value="${aRole.roleId}" th:text="${aRole.roleTitle}"></option>
+	      </select>		
+		</div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </div>
+        <div class="clearfix">
+            <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
+            <a href="#" class="float-right">Forgot Password?</a>
+        </div>        
+    </form>
+    <p class="text-center"><a href="#">Create an Account</a></p>
+</div>
+
+</body>
+</html>

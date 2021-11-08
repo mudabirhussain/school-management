@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts :: header">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Participants</title>
+</head>
+<body>
+<nav th:replace="layouts :: navbar"></nav>
+
+<br><br>
+<div class="container">
+<h1>Participants</h1>
+<br>
+	<a th:href="@{/participants/add}" class="btn btn-primary btn-sm mb-3">Add Participant</a>
+<br>
+	<div class="row">
+		<div class="col-sm-6">
+		</div>
+		<div class="col-sm-3">
+			<input type="text" class="form-control" placeholder="Search...">
+		</div>
+		<div class="col-sm-2">
+			<select id="inputState" class="form-control">
+	        <option selected disabled>Choose Role</option>
+	        <option th:each="role : ${roles}" th:text="${role.roleTitle}"></option>
+	      </select>		
+		</div>
+		<div class="col-sm-1">
+		   <button type="submit" class="btn btn-secondary">Search</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Contact</th>
+					<th>Role</th>
+					<th>Edit-Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="participant : ${participants}">
+					<td th:text="${participant.name}"></td>
+					<td th:text="${participant.lastName}"></td>
+					<td th:text="${participant.contact}"></td>
+					<td th:text="${participant.role.roleTitle}"></td>
+					<td><a href="#">Edit</a>-<a href="#">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>
